@@ -493,6 +493,7 @@ void workspace_show(Con *workspace) {
         con_focus(next);
 
     ipc_send_workspace_event("focus", workspace, current);
+    ipc_send_window_event("focus", old_focus, next);
 
     DLOG("old = %p / %s\n", old, (old ? old->name : "(null)"));
     /* Close old workspace if necessary. This must be done *after* doing
